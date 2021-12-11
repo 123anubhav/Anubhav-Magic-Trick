@@ -1,0 +1,274 @@
+<!-- Created by Rovie M. Francisco -->
+
+<!-- 02.16.21 -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Anubhav's Magic Trick</title>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <style type="text/css">
+            body {
+                text-align: center;
+                background-color: #181f27;
+                color: #FFF;
+                font-family: Miriam;
+            }
+            #play, #second, #third, #fourth, #fifth, #sixth, #final, #secondBtn, #thirdBtn, #fourthBtn, #fifthBtn, #sixthBtn, #finalBtn {
+                display: none;
+            }
+            button {
+                width: 200px;
+                height: 30px;
+                background-color: #007DFF;
+                color: #FFF;
+                margin: auto;
+                font-size: 16px;
+                border: 0;
+                outline: 0;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                letter-spacing: 10px;
+                transition: 0.5s;
+                backdrop-filter: blur(8px);
+            }
+            button:disabled, button[disabled] {
+                border: 1px solid #00F;
+                background-color: #55ADFF;
+                color: #00F;
+                transition: 2s;
+            }
+            button:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: linear-gradient(45deg, transparent 50%, #00F 60%,  transparent 70%);
+                background-size: 200% 100% ;
+                background-position: 165% 0;
+                height: 100%;
+                width: 100%;
+                transition: 0.7s;
+            }
+            button:hover:after {
+                background-position:  -20% 0;
+            }
+
+            #finalBtn {
+                height: 50px;
+                width: 250px;
+                font-size: 24px;
+            }
+            h1, h3{
+                animation: colors 2s ease-in infinite,
+                                    left 1s ease 1;
+                
+            }
+            @keyframes colors {
+                0% { color: #FDF; }
+                50% { color: #FFF; }
+                100% { color: #FDF; }
+            }
+            @keyframes left {
+                from { transform: scale(.5); }
+            }
+            button {
+                animation: up 1s ease 1;
+            }
+            @keyframes up {
+                from { transform: translateY(50px); }
+            }
+            
+             .ripple {
+                height: 100px;
+                width: 100px;
+                background: rgba(0,0,0,0.2);
+                box-shadow:  20px 20px 60px #bebebe,
+                                        -20px -20px 60px #ffffff;
+                position: fixed;
+                animation: ripple 0.5s linear;
+                border-radius: 50%;
+                transform-origin: center;
+                z-index: 9999;
+            }
+            @keyframes ripple {
+                from {
+                    transform: scale(0);
+                    opacity: 0.6;
+                }
+                to {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <audio controls style="display:none;" loop id="audio">
+            
+            <source id="audio-source" src="https://mobcup.net/d/1gh0a10j/mp3">
+         
+         </audio>
+         
+        <h1>Anubhav's Magic Trick</h1>
+        
+        <div id="start">
+            <button onclick="startBtn()"> START </button>
+        </div>
+        <div id="play">
+            <h3 id="first"> Think About any Number in your Mind...</h3>
+            <button id="firstBtn" onclick="firsts()">NEXT</button>
+            
+            <h3 id="second"></h3>
+            <button id="secondBtn" onclick="seconds()">NEXT</button>
+            
+            <h3 id="third"></h3>
+            <button id="thirdBtn" onclick="thirds()">NEXT</button>
+            
+            <h3 id="fourth"></h3>
+            <button id="fourthBtn" onclick="fourths()">NEXT</button>
+            
+            <h3 id="fifth"></h3>
+            <button id="fifthBtn" onclick="fifths()">NEXT</button>
+            
+            <h3 id="sixth"></h3>
+            <button id="sixthBtn" onclick="sixths()">REVEAL</button>
+            
+            <h3 id="final"></h3>
+            <button id="finalBtn" onclick="finals()">RESTART</button>
+        </div>
+        <script type="text/javascript">
+            //alert("If you like the Trick. Please Follow me and do an Upvote. Thanks");
+            
+            alert("I hope you like it :) --> Happy Weekened :)  ");
+            
+
+            /**
+            swal({
+                title:"Great you are here.",
+                text:"Plese do an Upvote and Follow me. Thanks",
+            });
+            **/
+            
+            var play = document.querySelector("#play");
+            var second = document.querySelector("#second");
+            var third = document.querySelector("#third");
+            var fourth = document.querySelector("#fourth");
+            var fifth = document.querySelector("#fifth");
+            var sixth = document.querySelector("#sixth");
+            var final = document.querySelector("#final");
+            
+            var firstBtn = document.querySelector("#firstBtn");
+            var secondBtn = document.querySelector("#secondBtn");
+            var thirdBtn = document.querySelector("#thirdBtn");
+            var fourthBtn = document.querySelector("#fourthBtn");
+            var fifthBtn = document.querySelector("#fifthBtn");
+            var sixthBtn = document.querySelector("#sixthBtn");
+            var finalBtn = document.querySelector("#finalBtn");
+            
+            var num1 = 0;
+            var num2 = 0;
+            var ans = 0;
+            
+            function startBtn() {
+                play.style.display = "block";
+            }
+            function firsts() {                                   //..........S1
+                num1 = Math.floor(Math.random() * 10) + 1;
+                second.innerHTML = "Take the Same Number from your friend Shahid Kapoor and get the Total... " ;//+ num1;
+                second.style.display = "block";
+                secondBtn.style.display = "block";
+                
+                firstBtn.disabled = true;
+            }
+            
+            function seconds() {                            //..........S2
+                num2 = Math.floor(Math.random() * 100) + 1;
+                third.innerHTML = "Take "+ num2 + " From Me and ADD it to your Total..." ;
+                third.style.display = "block";
+                thirdBtn.style.display = "block";
+                
+                secondBtn.disabled = true;
+            }
+            
+            function thirds() {
+                fourth.innerHTML = "Now Give half of it to Your Friend Vicky Kaushal... "; // + num1;
+                fourth.style.display = "block";
+                fourthBtn.style.display = "block";
+                
+                thirdBtn.disabled = true;
+            }
+            
+            function fourths() {
+                fifth.innerHTML = "Now return Back the SAME Number you have taken From your Friend Sahid kapoor...";
+                fifth.style.display = "block";
+                fifthBtn.style.display = "block";
+                
+                fourthBtn.disabled = true;
+            }
+            
+            function fifths() {
+                sixth.innerHTML = "I got the Result. Eager to Know ...?";
+                sixth.style.display = "block";
+                sixthBtn.style.display = "block";
+                
+                fifthBtn.disabled = true;
+            }
+            
+            function sixths() {
+                ans = num2 / 2;
+                
+                final.innerHTML = "Final answer is:<br /><h1>" + ans + "</h1>";
+               // <p> Have a Nice Day :) </p>
+                final.style.display = "block";
+                finalBtn.style.display = "block";
+                
+                sixthBtn.disabled = true;
+            }
+            
+            function finals() {
+                play.style.display = "none";
+                second.style.display = "none";
+                secondBtn.style.display = "none";
+                third.style.display = "none";
+                thirdBtn.style.display = "none";
+                fourth.style.display = "none";
+                fourthBtn.style.display = "none";
+                fifth.style.display = "none";
+                fifthBtn.style.display = "none";
+                sixth.style.display = "none";
+                sixthBtn.style.display = "none";
+                final.style.display = "none";
+                finalBtn.style.display = "none";
+                
+                firstBtn.disabled = false;
+                secondBtn.disabled = false;
+                thirdBtn.disabled = false;
+                fourthBtn.disabled = false;
+                fifthBtn.disabled = false;
+                sixthBtn.disabled = false;
+            }
+            
+            window.onload=()=>{
+                document.body.onclick=(e)=>{
+                    let x= e.clientX;
+                    let y= e.clientY;
+                    let ripple= document.createElement("span");
+
+                    ripple.className="ripple";
+                    ripple.style.left = x-50+"px";
+                    ripple.style.top = y-50+"px";
+
+                    document.body.appendChild(ripple);
+                    setTimeout(()=>{
+                        ripple.remove();
+                    }, 500)
+                }
+            }
+            window.addEventListener("click", playAudio);
+            function playAudio() {
+                document.getElementById("audio").play();
+            }
+        </script>
+    </body>
+</html>
